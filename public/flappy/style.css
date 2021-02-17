@@ -1,0 +1,121 @@
+
+body {
+    display: flex;
+}
+.game-container {
+    width: 500px;
+    height: 730px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.border-left {
+    width: 100px;
+    height: 810px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    left: -100;
+    top: -80;
+    border-right: 5px solid tan;
+    
+    
+}
+
+.border-right {
+    width: 80px;
+    height: 730px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    left: 500px;
+    border-left: 5px solid tan;
+
+}
+
+.border-top {
+    width: 580px;
+    height: 80px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    top: -80;
+    border-bottom: 5px solid tan;
+}
+
+.border-bottom {
+    width: 580px;
+    height: 80px;
+    position: absolute;
+    background-color: white;
+    z-index: +1;
+    bottom: -80;
+    border-top: 5px solid tan;
+    
+
+}
+.sky {
+    background-image: url(fb-game-background.png);
+    width: 500px;
+    height: 580px;
+    position: absolute;
+}
+
+.ground {
+    background-image: url(bottom-background.png);
+    width: 500px;
+    height: 150px;
+    position: absolute;
+    top: 580px;
+    z-index: +1;
+}
+
+.bird {
+    background-image: url(flappy-bird.png);
+    position: absolute;
+    width: 60px;
+    height: 45px;
+
+}
+
+.obstacle {
+    background-image: url(flappybird-pipe.png);
+    width: 60px;
+    height: 300px;
+    position: absolute;
+
+}
+
+.topObstacle {
+    background-image: url(flappybird-pipe.png);
+    transform: rotate(180deg);
+    width: 60px;
+    height: 300px;
+    position: absolute;
+}
+
+.counter {
+    text-align: center;
+    font-size: 80px;
+    width: 80px;
+    background-color: tan;
+    position: absolute;
+    z-index: +4;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.button {
+    width: 200px;
+    height: 50px;
+    background-color: grey;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
