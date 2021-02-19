@@ -1,0 +1,77 @@
+body {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: tan;
+    color: black;
+    padding: 50px 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+  
+.flex-outer,
+.flex-inner {
+    list-style-type: none;
+    padding: 0 ;
+}
+  
+.flex-outer {
+    margin-right: 300;
+}
+  
+.flex-outer li,
+.flex-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+  
+.flex-inner {
+    padding: 0 8px;
+    justify-content: space-between;
+      
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 8px;
+    font-weight: 300;
+    text-transform: none;
+}
+  
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+  
+.flex-outer > li > label + *,
+.flex-inner {
+    flex: 1 0 220px;
+}
+
+.flex-outer li button {
+    margin-right: auto;
+    padding: 8px 16px;
+    border: none;
+    background: white;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
+  
+.flex-inner li {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.flex-outer li input, textarea {
+    margin-left: 180px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+
