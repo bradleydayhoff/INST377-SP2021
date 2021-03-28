@@ -20,7 +20,10 @@ const liveReloadServer = reload.createServer();
 liveReloadServer.watch(path.join(__dirname, staticFolder));
 
 // Configure express
-app.use(connectReload());
+if (process.env.CONTEXT === 'development') {
+  app.use(connectReload());
+}
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(staticFolder));
@@ -45,16 +48,25 @@ app.route('/api')
     console.log('Now send something back to your client');
     const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     const json = await data.json();
-    res.json(json);
-    // res.send('Hello World');
+
+    fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
+      .then((data) => data.json())
+      .then((data2) => {
+        // do something with your data!
+      })
+      .catch((err) => console.error(err));
+
+    res.json({data: json});
   });
 
 app.listen(port, async () => {
   console.log(`Example app listening on port ${port}!`);
 });
 
-liveReloadServer.server.once('connection', () => {
-  setTimeout(() => {
-    liveReloadServer.refresh('/');
-  }, 100);
-});
+if (process.env.CONTEXT === 'development') {
+  liveReloadServer.server.once('connection', () => {
+    setTimeout(() => {
+      liveReloadServer.refresh('/');
+    }, 100);
+  });
+}
