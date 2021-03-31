@@ -26,20 +26,20 @@ async function dataHandler(mapObjectFromFunction) {
   form.addEventListener('submit', async(event) => {
     event.preventDefault();
     const filtered = data.filter((record) => record.zip.includes(search.value) && record.geocoded_column_1);
-    filtered.forEach((item) => {
+    const topFive = filtered.slice(0, 5);
+    topFive.forEach((item) => {
       const longLat = item.geocoded_column_1.coordinates;
       const marker = L.marker([longLat[1], longLat[0]]).addTo(mapObjectFromFunction);
 
       const appendItem = document.createElement('li');
       appendItem.classList.add('block');
       appendItem.classList.add('list-item');
-      appendItem.innerHTML = `<div class="list-header is-size-5">${item.name}</div>`;
+      appendItem.innerHTML = `<div class="list-header is-size-5">${item.name}</div><address class="is-size-6">${item.address_line_1}</address>`;
       targetList.append(appendItem);
     });
     const {coordinates} = topFive[0]?.geocoded_column_1;
-    mapObjectFromFunction.panTo([coordinates[1]], coordinates[0], 0);
+    mapObjectFromFunction.panTo([coordinates[1], coordinates[0]], 0);
   });
-
   // eslint-disable-next-line max-len
 }
 
